@@ -1,0 +1,74 @@
+{
+  "skills": [
+    {
+      "id": "python",
+      "name": "Python",
+      "category": "Programming Languages",
+      "synonyms": ["python", "python3", "py", "pip", "pep8", "cpython"],
+      "description": "General-purpose language widely used in backend engineering, data science, scripting, and automation."
+    },
+    {
+      "id": "java",
+      "name": "Java",
+      "category": "Programming Languages",
+      "synonyms": ["java", "jvm", "jdk", "spring", "spring boot", "springboot"],
+      "description": "Object-oriented, robust enterprise programming language used in backend microservices and Android."
+    },
+    {
+      "id": "sql",
+      "name": "SQL",
+      "category": "Data & Databases",
+      "synonyms": ["sql", "mysql", "postgresql", "postgres", "sqlite", "tsql", "plsql", "rdbms", "relational database"],
+      "description": "Standard language for storing, querying, aggregating, and managing data in relational databases."
+    },
+    {
+      "id": "statistics",
+      "name": "Statistics",
+      "category": "Data & Analytics",
+      "synonyms": ["statistics", "statistical", "probability", "hypothesis testing", "p-value", "a/b testing", "inferential statistics"],
+      "description": "Mathematical foundation for data exploration, experimental design, distributions, and hypothesis validation."
+    },
+    {
+      "id": "data_analysis",
+      "name": "Data Analysis",
+      "category": "Data & Analytics",
+      "synonyms": ["data analysis", "data analytics", "eda", "exploratory data analysis", "data cleaning", "pandas", "visualization", "bi"],
+      "description": "Cleaning, transforming, inspecting, and modeling data to discover actionable business insights."
+    },
+    {
+      "id": "machine_learning",
+      "name": "Machine Learning",
+      "category": "Artificial Intelligence",
+      "synonyms": ["machine learning", "ml", "scikit-learn", "sklearn", "supervised learning", "unsupervised learning", "model training", "predictive modeling"],
+      "description": "Building algorithmic models that learn patterns from empirical data to perform predictions or classifications."
+    },
+    {
+      "id": "git_and_github",
+      "name": "Git and GitHub",
+      "category": "Tools & Version Control",
+      "synonyms": ["git", "github", "version control", "pull request", "branching", "merge", "git flow", "repo"],
+      "description": "Distributed version control system for code management, collaborative review, and CI/CD workflows."
+    },
+    {
+      "id": "problem_solving",
+      "name": "Problem Solving",
+      "category": "Core & Engineering Skills",
+      "synonyms": ["problem solving", "analytical thinking", "algorithmic thinking", "critical thinking", "troubleshooting", "debugging"],
+      "description": "Methodical approach to decomposing complex ambiguity into tractable engineering solutions."
+    },
+    {
+      "id": "communication",
+      "name": "Communication",
+      "category": "Professional Skills",
+      "synonyms": ["communication", "technical writing", "verbal communication", "cross-functional", "presentation", "stakeholder management"],
+      "description": "Articulating technical concepts clearly to both technical peers and non-technical stakeholders."
+    },
+    {
+      "id": "excel",
+      "name": "Excel",
+      "category": "Tools & Productivity",
+      "synonyms": ["excel", "spreadsheets", "vlookup", "xlookup", "pivot tables", "pivot table", "google sheets"],
+      "description": "Spreadsheet software for tabular data organization, quick financial modeling, pivot tables, and calculations."
+    }
+  ]
+}

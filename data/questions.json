@@ -1,0 +1,536 @@
+{
+  "questions": [
+    {
+      "id": "py_01",
+      "skill_id": "python",
+      "question": "What is the output of the following Python snippet?\n\n```python\nnums = [1, 2, 3]\ndef append_val(val, target=[]):\n    target.append(val)\n    return target\n\nprint(append_val(10))\nprint(append_val(20))\n```",
+      "options": [
+        "[10] then [20]",
+        "[10] then [10, 20]",
+        "TypeError: mutable default argument",
+        "[1, 2, 3, 10] then [1, 2, 3, 20]"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "In Python, default parameter values are evaluated once when the function definition is executed, not each time the function is called. Therefore, the same mutable list `target` is reused across multiple calls unless explicitly overridden.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "id": "py_02",
+      "skill_id": "python",
+      "question": "Which Python dictionary method safely retrieves a value for a key without raising a KeyError if the key is absent?",
+      "options": [
+        "dict.fetch(key, default)",
+        "dict.has(key)",
+        "dict.get(key, default)",
+        "dict.find(key)"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "`dict.get(key, default)` returns the value if the key exists, or the optional default value (None by default) if the key does not exist, avoiding a KeyError.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "py_03",
+      "skill_id": "python",
+      "question": "What is the primary difference between a Python list and a generator expression when processing 10 million records?",
+      "options": [
+        "Generators are immutable while lists are mutable",
+        "Generators evaluate lazily on-demand saving memory, while lists allocate memory for all items immediately",
+        "Lists cannot be iterated over in a for-loop",
+        "Generators execute in a separate operating system thread"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Generators produce items one at a time using iterator protocol and lazy evaluation (`yield`), consuming minimal memory regardless of dataset size compared to eager in-memory list allocations.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "id": "py_04",
+      "skill_id": "python",
+      "question": "What does the expression `[x**2 for x in range(5) if x % 2 == 0]` evaluate to in Python?",
+      "options": [
+        "[0, 4, 16]",
+        "[1, 9]",
+        "[0, 1, 4, 9, 16]",
+        "[4, 16]"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "The comprehension filters even numbers from 0, 1, 2, 3, 4 (which are 0, 2, 4) and squares each of them: 0^2 = 0, 2^2 = 4, 4^2 = 16.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "java_01",
+      "skill_id": "java",
+      "question": "In Java, what is the key difference between `==` and the `.equals()` method when comparing two String objects?",
+      "options": [
+        "`==` compares character values, `.equals()` compares memory references",
+        "`==` compares object references (memory address), `.equals()` compares textual contents",
+        "There is no difference; they are strictly identical in Java",
+        "`.equals()` can only be used on primitive types"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "In Java, `==` checks reference equality (whether both references point to the exact same memory location), whereas `String.equals()` compares the actual sequence of characters.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "java_02",
+      "skill_id": "java",
+      "question": "Why is it considered best practice to declare fields as `private` and provide public getter/setter methods in Java?",
+      "options": [
+        "It increases CPU execution speed by bypassing the JVM stack",
+        "It satisfies encapsulation, allowing validation and preventing arbitrary mutation of internal object state",
+        "It automatically serializes the class into JSON",
+        "It prevents the garbage collector from disposing the object"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Encapsulation hides the internal representation of an object, protects its invariants, and allows the class author to control read and write access through validated accessor methods.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "java_03",
+      "skill_id": "java",
+      "question": "Which collection in Java guarantees fast constant-time O(1) lookups by key without preserving insertion order?",
+      "options": [
+        "ArrayList",
+        "TreeSet",
+        "HashMap",
+        "LinkedList"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "`HashMap` provides average O(1) time complexity for `get` and `put` operations based on hashing, without ordering guarantees.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "id": "java_04",
+      "skill_id": "java",
+      "question": "What is the purpose of the `final` keyword when applied to a variable in Java?",
+      "options": [
+        "It forces the variable to be garbage collected at the end of the method",
+        "It prevents the variable reference from being reassigned once initialized",
+        "It makes the variable accessible across all classes globally",
+        "It converts a primitive variable into a wrapper object"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "A `final` variable can only be assigned once. If it holds an object reference, the reference cannot point to another object, though the object's internal fields may still be mutable unless also designed as immutable.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "sql_01",
+      "skill_id": "sql",
+      "question": "What is the difference between `WHERE` and `HAVING` clauses in a SQL query?",
+      "options": [
+        "`WHERE` filters aggregated groups, `HAVING` filters individual rows before grouping",
+        "`WHERE` filters individual rows before grouping, `HAVING` filters groups created by `GROUP BY`",
+        "`HAVING` can only be used with subqueries, `WHERE` cannot",
+        "`WHERE` is strictly for JOIN operations, `HAVING` is for SELECT operations"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "`WHERE` filters row records before any groupings are formed. `HAVING` filters the resulting aggregate calculations (e.g. `COUNT(*) > 5`) produced by `GROUP BY`.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "sql_02",
+      "skill_id": "sql",
+      "question": "Which SQL JOIN returns all rows from the left table, and matching rows from the right table (filling NULLs when there is no match)?",
+      "options": [
+        "INNER JOIN",
+        "LEFT JOIN (or LEFT OUTER JOIN)",
+        "RIGHT JOIN",
+        "CROSS JOIN"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "`LEFT JOIN` preserves all rows from the left table unconditionally and includes matched attributes from the right table, populating `NULL` where right-hand matches do not exist.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "sql_03",
+      "skill_id": "sql",
+      "question": "Given a table `employees(id, department_id, salary)`, which window function assigns consecutive ranks without skipping numbers when salaries are tied?",
+      "options": [
+        "ROW_NUMBER()",
+        "RANK()",
+        "DENSE_RANK()",
+        "NTILE(4)"
+      ],
+      "correct_answer_index": 2,
+      "explanation": "`DENSE_RANK()` assigns identical ranks to ties without gaps (e.g., 1, 2, 2, 3), whereas `RANK()` leaves gaps (1, 2, 2, 4) and `ROW_NUMBER()` assigns strictly unique sequential numbers.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "id": "sql_04",
+      "skill_id": "sql",
+      "question": "Why is using `SELECT *` considered an anti-pattern in high-throughput production SQL queries?",
+      "options": [
+        "It causes an immediate SQL syntax validation error in modern databases",
+        "It transfers unnecessary network payload, defeats covering index optimizations, and causes fragility if table schemas change",
+        "It forces the database to convert data to XML format",
+        "It automatically locks the entire database table against concurrent reads"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Selecting only the necessary columns reduces I/O bandwidth, allows query planners to use index-only scans, and prevents unexpected application errors when columns are added or modified.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "id": "stats_01",
+      "skill_id": "statistics",
+      "question": "When a dataset has extreme positive outliers (e.g., household incomes where a few billionaires live in a town), which metric best represents the central tendency?",
+      "options": [
+        "Mean",
+        "Median",
+        "Variance",
+        "Standard Deviation"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "The median is robust against extreme outliers because it reflects the 50th percentile rank, whereas the arithmetic mean is pulled heavily toward the tail of the distribution.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "stats_02",
+      "skill_id": "statistics",
+      "question": "What is the interpretation of a p-value of 0.03 in a two-tailed hypothesis test with a significance threshold (alpha) of 0.05?",
+      "options": [
+        "There is a 97% probability that the alternate hypothesis is completely false",
+        "Assuming the null hypothesis is true, the probability of observing data as extreme as observed is 3%, so we reject the null hypothesis",
+        "The effect size is exactly 0.03 units",
+        "The test is invalid because p-value must be greater than alpha"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "A p-value measures the probability of observing the test results (or more extreme) under the assumption that the null hypothesis is true. Since 0.03 < 0.05, we reject the null hypothesis at the 5% significance level.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "id": "stats_03",
+      "skill_id": "statistics",
+      "question": "What does a Pearson correlation coefficient (r) of -0.85 between study hours and exam errors indicate?",
+      "options": [
+        "A strong negative linear association: more study hours correspond to fewer exam errors",
+        "A weak negative relationship with almost no predictive utility",
+        "Studying directly causes student stress and produces random mistakes",
+        "A calculation error, because correlation coefficients cannot be negative"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "Pearson's r ranges from -1.0 to +1.0. A value of -0.85 signifies a strong negative linear association, meaning an increase in one variable corresponds consistently to a decrease in the other.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "stats_04",
+      "skill_id": "statistics",
+      "question": "According to the Central Limit Theorem (CLT), what happens to the distribution of sample means as the sample size (n) becomes sufficiently large?",
+      "options": [
+        "It becomes uniformly distributed regardless of original variance",
+        "It approaches a normal distribution regardless of the underlying population's original shape",
+        "The sample variance becomes infinitely large",
+        "The sample mean becomes exactly equal to zero"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "The Central Limit Theorem states that the distribution of independent sample means will approximate a normal distribution as sample size grows (typically n >= 30), regardless of the population distribution shape.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "id": "da_01",
+      "skill_id": "data_analysis",
+      "question": "In pandas, which function is best suited to handle missing values by replacing them with the column mean?",
+      "options": [
+        "`df.dropna(axis=0)`",
+        "`df.fillna(df.mean(numeric_only=True))`",
+        "`df.replace_null(method='mean')`",
+        "`df.impute_zeros()`"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "`df.fillna(df.mean(numeric_only=True))` imputes missing NaN entries with the calculated mean of each respective numeric column.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "da_02",
+      "skill_id": "data_analysis",
+      "question": "What is the risk of performing data transformation (such as MinMax scaling or mean imputation) on the full dataset before splitting into train and test sets?",
+      "options": [
+        "It causes an Out-Of-Memory exception on small datasets",
+        "Data leakage: information from the test evaluation set leaks into the training pipeline, yielding overly optimistic evaluation results",
+        "The model weights will become non-deterministic",
+        "There is no risk; preprocessing should always be performed globally"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Fitting scalers or imputers on the full dataset causes data leakage, as test set statistics influence training, masking true model generalization performance.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "id": "da_03",
+      "skill_id": "data_analysis",
+      "question": "In pandas, what is the key difference between `.loc` and `.iloc`?",
+      "options": [
+        "`.loc` is label-based indexing; `.iloc` is integer-position based indexing",
+        "`.loc` works only on rows; `.iloc` works only on columns",
+        "`.loc` modifies the dataframe in-place; `.iloc` returns a view",
+        "`.loc` is deprecated in pandas 2.0 and replaced by `.iloc`"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "`.loc` accesses data via row and column labels/names, whereas `.iloc` accesses data strictly by integer zero-based index positions.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "da_04",
+      "skill_id": "data_analysis",
+      "question": "Which visualization type is most appropriate for assessing the distribution shape, spread, and identifying potential outliers of a continuous numerical variable?",
+      "options": [
+        "Pie chart",
+        "Box plot (or Box-and-Whisker plot)",
+        "Stacked bar chart",
+        "Treemap"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "A box plot visually depicts the median, interquartile range (IQR), minimum, maximum, and flags individual data points outside 1.5 * IQR as outliers.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "ml_01",
+      "skill_id": "machine_learning",
+      "question": "When a machine learning model achieves 99.5% accuracy on training data but drops to 62.0% on test data, what issue is present?",
+      "options": [
+        "High bias (underfitting)",
+        "High variance (overfitting)",
+        "Vanishing gradient problem",
+        "Label leakage in test set"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "High training accuracy paired with poor unseen test performance is the hallmark of overfitting (high variance), where the model memorizes training noise rather than learning generalizable patterns.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "ml_02",
+      "skill_id": "machine_learning",
+      "question": "In a severe class imbalance scenario (e.g. 99% non-fraud vs 1% fraud), why is Raw Accuracy a misleading evaluation metric?",
+      "options": [
+        "Accuracy cannot be calculated on binary outcomes",
+        "A naive model predicting 'no fraud' for every transaction achieves 99% accuracy while catching zero fraud cases",
+        "Accuracy is computationally too expensive compared to ROC-AUC",
+        "Accuracy is only defined for regression models"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "With imbalanced classes, a trivial majority-class classifier yields high accuracy without predictive utility for the minority class. Precision, Recall, F1-score, or PR-AUC are required.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "id": "ml_03",
+      "skill_id": "machine_learning",
+      "question": "What is the primary role of L1 regularization (Lasso) compared to L2 regularization (Ridge) in linear models?",
+      "options": [
+        "L1 shrinks coefficients towards zero and can drive them strictly to zero, performing automated feature selection",
+        "L1 prevents training loss from converging",
+        "L1 only works on categorical variables",
+        "L2 eliminates features completely while L1 retains all features with small weights"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "L1 penalty (absolute sum of coefficients) produces sparse models by zeroing out irrelevant feature coefficients, acting as built-in feature selection. L2 penalty (squared sum) shrinks weights smoothly without zeroing them.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "id": "ml_04",
+      "skill_id": "machine_learning",
+      "question": "Why is K-Fold Cross-Validation preferred over a single train/test split on modest-sized datasets?",
+      "options": [
+        "It guarantees 100% test accuracy on production deployment",
+        "It provides a more reliable estimate of model performance by training and evaluating on multiple distinct validation folds",
+        "It eliminates the need for feature engineering and scaling",
+        "It reduces model training time by a factor of K"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "K-fold cross-validation uses every data point for both training and validation across K iterations, reducing variance and evaluation bias compared to a single split.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "git_01",
+      "skill_id": "git_and_github",
+      "question": "What is the difference between `git fetch` and `git pull`?",
+      "options": [
+        "`git pull` updates remote tracking branches without touching local files; `git fetch` overrides local code",
+        "`git fetch` downloads commits from remote without merging; `git pull` downloads commits and immediately merges them into the current branch",
+        "`git fetch` deletes untracked files; `git pull` creates a new branch",
+        "They are exact aliases for the same underlying operation"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "`git fetch` retrieves metadata and commits from the remote repository without altering your working directory. `git pull` runs `git fetch` followed immediately by `git merge` into the checked-out branch.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "git_02",
+      "skill_id": "git_and_github",
+      "question": "Which Git command is used to temporarily shelve (hide) uncommitted local changes so you can switch branches cleanly?",
+      "options": [
+        "`git stash`",
+        "`git commit --temp`",
+        "`git branch --save`",
+        "`git pause`"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "`git stash` records the current state of the working directory and index, reverting changes to match the HEAD commit so you can work on another branch. You can restore them later using `git stash pop`.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "git_03",
+      "skill_id": "git_and_github",
+      "question": "What happens when a merge conflict occurs during a Git pull or merge?",
+      "options": [
+        "Git automatically deletes conflicting files to prevent corruption",
+        "Git halts the merge, marks conflicting sections inside the files with conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`), and asks the developer to resolve them",
+        "Git rolls back the remote repository to the previous version",
+        "Git rejects the local commit history permanently"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Git cannot safely pick which modification is correct when lines in the same file diverge. It marks conflicts with delimiter tags and prompts the developer to choose or combine changes before committing.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "git_04",
+      "skill_id": "git_and_github",
+      "question": "Why is running `git push --force` on a shared collaborative branch (e.g. `main` or `develop`) strongly discouraged?",
+      "options": [
+        "It encrypts the repository with a password",
+        "It can overwrite and permanently delete commits pushed by teammates, disrupting their branch histories",
+        "It causes GitHub actions to charge maximum billing fees",
+        "It disables pull requests permanently on the repository"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Force pushing overwrites the remote commit tree with your local tree. Any commits pushed by teammates that are not in your local history will be severed from the branch history.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "id": "ps_01",
+      "skill_id": "problem_solving",
+      "question": "When debugging an unexpected `IndexError: list index out of range` in a production loop, what is the best first step?",
+      "options": [
+        "Restart the production server and hope it resolves itself",
+        "Inspect the loop boundaries, empty list conditions, and print/log the list length and iteration counter before the fault line",
+        "Wrap the entire application in a bare `except: pass` statement",
+        "Rewrite the whole algorithm in another programming language"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Effective problem solving requires systematically isolating the root cause by examining inputs, off-by-one errors, and boundary/empty conditions through structured logging or debugging.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "ps_02",
+      "skill_id": "problem_solving",
+      "question": "What is the primary benefit of the 'Divide and Conquer' algorithmic problem-solving paradigm (used in Merge Sort or Binary Search)?",
+      "options": [
+        "It increases space complexity to maximize RAM usage",
+        "It breaks a complex problem into smaller identical sub-problems, solves them independently, and combines their solutions efficiently",
+        "It converts iterative code into single-threaded SQL queries",
+        "It replaces deterministic logic with random probability"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Divide and conquer decomposes a problem into smaller manageable subproblems of the same type, solves each subproblem recursively, and combines the results (often reducing O(N^2) complexity to O(N log N) or O(log N)).",
+      "difficulty": "Intermediate"
+    },
+    {
+      "id": "ps_03",
+      "skill_id": "problem_solving",
+      "question": "You are asked to optimize an API endpoint taking 12 seconds to respond. How should you approach this methodically?",
+      "options": [
+        "Immediately rewrite all database tables into NoSQL without measurement",
+        "Profile the endpoint to identify the precise bottleneck (database query, network latency, serialization, or algorithmic CPU block) before changing code",
+        "Add more CPU cores to the cloud server and close the ticket",
+        "Delete logging statements to reduce disk I/O"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Rule of engineering optimization: Measure first, do not guess. Profiling reveals whether 11.5 seconds is spent waiting on an unindexed SQL query or an external network call, directing effort where it has highest ROI.",
+      "difficulty": "Intermediate"
+    },
+    {
+      "id": "comm_01",
+      "skill_id": "communication",
+      "question": "When presenting technical findings from a complex machine learning model to business executives, what strategy is most effective?",
+      "options": [
+        "Explain backpropagation equations and gradient descent derivatives in detail",
+        "Focus on the business impact, key metrics (ROI, conversion, risk reduction), actionable takeaways, and keep technical architecture as an appendix",
+        "Send the raw Python code file without any slide summary",
+        "Use dense engineering jargon to demonstrate technical depth"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Executive communication demands translating technical outputs into business value, cost savings, customer impact, and clear decisions, keeping technical nuance available if asked.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "comm_02",
+      "skill_id": "communication",
+      "question": "What makes a Pull Request (PR) description effective for peer reviewers?",
+      "options": [
+        "A single line saying 'Fixed bugs'",
+        "Context on why the change was made, a summary of what changed, instructions or screenshots on how to test it, and links to relevant issue tickets",
+        "A copy-paste of git commit hashes with no explanation",
+        "No description, because clean code should be self-documenting"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "A high-quality PR description gives reviewers context, outlines the solution design, specifies manual/automated test verification, and minimizes review friction.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "comm_03",
+      "skill_id": "communication",
+      "question": "When you realize you will miss an agreed project delivery deadline by 2 days, what is the best professional approach?",
+      "options": [
+        "Say nothing and submit whatever is finished 2 days late",
+        "Notify the team and stakeholders as soon as the delay is identified, explain the blocker, propose a revised timeline, and offer mitigation options",
+        "Blame another teammate for delaying code review",
+        "Work all night without testing and ship broken code to meet the timestamp"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Early, proactive communication of risks, root blockers, and proposed remediations builds trust and allows stakeholders to adjust dependencies without surprise failures.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "excel_01",
+      "skill_id": "excel",
+      "question": "Which modern Excel function overcomes the limitation of `VLOOKUP` by looking both left and right, and defaulting to exact matches?",
+      "options": [
+        "`XLOOKUP`",
+        "`HLOOKUP`",
+        "`FIND_RECORD`",
+        "`MATCH_ROW`"
+      ],
+      "correct_answer_index": 0,
+      "explanation": "`XLOOKUP` replaced `VLOOKUP` and `HLOOKUP`. It defaults to exact matches, looks up values to the left or right of return arrays, and does not break when columns are inserted or deleted.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "excel_02",
+      "skill_id": "excel",
+      "question": "What is the primary function of a Pivot Table in Excel?",
+      "options": [
+        "To write Visual Basic scripts that automate mouse clicks",
+        "To rapidly summarize, aggregate, slice, and cross-tabulate large tabular datasets without writing complex formulas",
+        "To enforce cell data encryption for password protection",
+        "To convert formulas into static SQL schemas"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "Pivot Tables allow interactive multidimensional data summarization (sums, counts, averages, breakdowns by categories) with drag-and-drop flexibility.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "excel_03",
+      "skill_id": "excel",
+      "question": "In an Excel formula, what does putting dollar signs around a cell reference (e.g. `$B$4`) do when copying the formula across cells?",
+      "options": [
+        "Formats the cell value as US Currency",
+        "Creates an absolute reference, locking both the column (B) and row (4) so they do not change when dragged or filled",
+        "Marks the cell as read-only",
+        "Causes a divide-by-zero error"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "`$B$4` is an absolute reference. Locking row and column coordinates with `$` ensures the referenced cell stays constant when copied across rows or columns.",
+      "difficulty": "Beginner"
+    },
+    {
+      "id": "excel_04",
+      "skill_id": "excel",
+      "question": "Which Excel formula correctly calculates the sum of cells in range `D2:D100` only where column `C2:C100` equals 'West' and column `B2:B100` is greater than 50?",
+      "options": [
+        "`=SUM(D2:D100, IF('West', >50))`",
+        "`=SUMIFS(D2:D100, C2:C100, \"West\", B2:B100, \">50\")`",
+        "`=COUNTIFS(D2:D100, \"West\", B2:B100, 50)`",
+        "`=SUM.MULTIPLE(D2:D100, \"West\", 50)`"
+      ],
+      "correct_answer_index": 1,
+      "explanation": "`SUMIFS` syntax is `=SUMIFS(sum_range, criteria_range1, criteria1, criteria_range2, criteria2, ...)`. It sums values where all criteria evaluate to TRUE.",
+      "difficulty": "Intermediate"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-"""SkillBridge AI — Streamlit Web Application.
+"""SkillBridge AI — Ultra-Professional 3D Animated Web Application.
 
 Tagline: "Don't just claim skills. Prove them."
 A privacy-first, open-source AI platform for skill gap analysis,
@@ -41,116 +41,271 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Custom SaaS Styling (Curated Dark Slate / High Contrast Palette)
-CUSTOM_CSS = """
+# -----------------------------------------------------------------------------
+# Ultra-Professional 3D Animated Design System (CSS)
+# -----------------------------------------------------------------------------
+ULTRA_3D_CSS = """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
+/* Global Font & Canvas Background */
 html, body, [class*="css"] {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    color: #F1F5F9;
+}
+
+/* Base App Dark Holographic Mesh Background */
+.stApp {
+    background: radial-gradient(circle at 10% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.10) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.98) 0%, #070B14 100%) !important;
 }
 
 code, pre {
     font-family: 'JetBrains Mono', monospace !important;
 }
 
-/* Header & Accent Accents */
-.hero-tagline {
-    font-size: 1.15rem;
+/* Keyframe Animations */
+@keyframes floatSlow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-7px) rotate(0.4deg); }
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 15px rgba(99, 102, 241, 0.25), inset 0 1px 1px rgba(255,255,255,0.2); }
+    100% { box-shadow: 0 0 35px rgba(99, 102, 241, 0.65), inset 0 1px 2px rgba(255,255,255,0.4); }
+}
+
+@keyframes shimmerText {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientBorder {
+    0% { border-color: rgba(99, 102, 241, 0.3); }
+    50% { border-color: rgba(6, 182, 212, 0.5); }
+    100% { border-color: rgba(99, 102, 241, 0.3); }
+}
+
+/* 3D Holographic Hero Title */
+.hero-title-3d {
+    font-size: 2.85rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 25%, #818CF8 55%, #38BDF8 85%, #C084FC 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmerText 8s ease infinite;
+    margin-bottom: 0.25rem;
+    filter: drop-shadow(0 8px 16px rgba(99, 102, 241, 0.3));
+}
+
+.hero-tagline-3d {
+    font-size: 1.25rem;
     font-weight: 500;
     color: #94A3B8;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-/* Custom Cards */
-.metric-card {
-    background: #1E293B;
-    border: 1px solid #334155;
+.hero-tagline-3d span {
+    color: #38BDF8;
+    font-weight: 700;
+}
+
+/* 3D Elevated Cards */
+.card-3d {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.65) 0%, rgba(15, 23, 42, 0.85) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
+    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease, border-color 0.35s ease;
+    margin-bottom: 1.25rem;
+    position: relative;
+}
+
+.card-3d:hover {
+    transform: translateY(-5px) perspective(1000px) rotateX(1deg);
+    box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.3), inset 0 1px 2px 0 rgba(255, 255, 255, 0.25);
+    border-color: rgba(99, 102, 241, 0.45);
+}
+
+/* 3D Metric KPI Cards */
+.metric-card-3d {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    padding: 1.25rem 1.4rem;
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card-3d::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #6366F1, #38BDF8);
+    opacity: 0.8;
+}
+
+.metric-card-3d:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.4);
+    border-color: rgba(99, 102, 241, 0.5);
+}
+
+.metric-title-3d {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #94A3B8;
+    margin-bottom: 0.4rem;
+}
+
+.metric-value-3d {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #F8FAFC;
+    line-height: 1.1;
+    text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+}
+
+/* 3D Interactive Badges */
+.badge-3d-verified {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.35) 100%);
+    color: #6EE7B7;
+    border: 1px solid rgba(16, 185, 129, 0.5);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.badge-3d-gap {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(217, 119, 6, 0.35) 100%);
+    color: #FCD34D;
+    border: 1px solid rgba(245, 158, 11, 0.5);
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.badge-3d-neutral {
+    background: linear-gradient(135deg, rgba(51, 65, 85, 0.5) 0%, rgba(30, 41, 59, 0.6) 100%);
+    color: #CBD5E1;
+    border: 1px solid rgba(71, 85, 105, 0.5);
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* 3D Roadmap Day Card */
+.day-card-3d {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(20, 30, 55, 0.85) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-left: 5px solid #6366F1;
     border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 1.25rem 1.4rem;
+    box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
     margin-bottom: 1rem;
 }
-.metric-card-title {
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #94A3B8;
-    margin-bottom: 0.5rem;
-}
-.metric-card-value {
-    font-size: 1.85rem;
-    font-weight: 800;
-    color: #F8FAFC;
+
+.day-card-3d:hover {
+    transform: translateX(4px) translateY(-2px);
+    border-color: rgba(99, 102, 241, 0.6);
+    box-shadow: 0 15px 35px -10px rgba(99, 102, 241, 0.25);
 }
 
-/* Status Badges */
-.badge-verified {
-    background-color: #064E3B;
-    color: #6EE7B7;
-    border: 1px solid #059669;
-    padding: 3px 10px;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    display: inline-block;
-}
-.badge-practice {
-    background-color: #78350F;
-    color: #FCD34D;
-    border: 1px solid #D97706;
-    padding: 3px 10px;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    display: inline-block;
-}
-.badge-neutral {
-    background-color: #334155;
-    color: #CBD5E1;
-    border: 1px solid #475569;
-    padding: 3px 10px;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    display: inline-block;
+.day-card-3d.completed {
+    border-left-color: #10B981;
+    border-color: rgba(16, 185, 129, 0.3);
+    background: linear-gradient(135deg, rgba(6, 78, 59, 0.2) 0%, rgba(15, 23, 42, 0.9) 100%);
 }
 
-/* Roadmap Day Card */
-.day-card {
-    background: #0F172A;
-    border: 1px solid #1E293B;
-    border-left: 4px solid #6366F1;
-    border-radius: 8px;
+/* 3D Provenance Badges */
+.provenance-ai-3d {
+    background: linear-gradient(135deg, rgba(30, 27, 75, 0.8) 0%, rgba(49, 46, 129, 0.9) 100%);
+    border: 1px solid #818CF8;
+    color: #E0E7FF;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.provenance-fallback-3d {
+    background: linear-gradient(135deg, rgba(28, 25, 23, 0.8) 0%, rgba(41, 37, 36, 0.9) 100%);
+    border: 1px solid #78716C;
+    color: #F5F5F4;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 3D Button Depth Styling */
+div.stButton > button {
+    border-radius: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.02em !important;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 6px 15px -4px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+}
+
+div.stButton > button:hover {
+    transform: translateY(-3px) scale(1.01) !important;
+    box-shadow: 0 12px 25px -6px rgba(99, 102, 241, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.25) !important;
+}
+
+div.stButton > button:active {
+    transform: translateY(1px) scale(0.99) !important;
+}
+
+/* User Alert Callout 3D */
+.user-alert-3d {
+    background: linear-gradient(135deg, rgba(67, 56, 202, 0.15) 0%, rgba(15, 23, 42, 0.85) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    border-radius: 12px;
     padding: 1rem 1.25rem;
     margin-bottom: 1rem;
-}
-
-/* Provenance Banner */
-.provenance-ai {
-    background: #1E1B4B;
-    border: 1px solid #6366F1;
-    color: #C7D2FE;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-.provenance-fallback {
-    background: #1C1917;
-    border: 1px solid #78716C;
-    color: #E7E5E4;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+    box-shadow: 0 8px 20px -5px rgba(0,0,0,0.4);
 }
 </style>
 """
-st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
+st.markdown(ULTRA_3D_CSS, unsafe_allow_html=True)
 
 
 # -----------------------------------------------------------------------------
@@ -174,9 +329,42 @@ StorageManager.init_session_state()
 # Sidebar Navigation & AI Runtime Status
 # -----------------------------------------------------------------------------
 with st.sidebar:
-    st.title(f"{APP_ICON} {APP_NAME}")
+    st.markdown(
+        f'<div style="font-size:1.6rem; font-weight:800; color:#F8FAFC;">{APP_ICON} {APP_NAME}</div>',
+        unsafe_allow_html=True,
+    )
     st.caption(f"v{APP_VERSION} • {APP_TAGLINE}")
     st.divider()
+
+    # User Profile Status Pill
+    is_profile_ready = bool(st.session_state.get("profile_completed", False))
+    candidate_name = st.session_state.get("student_name", "").strip() or (
+        "Anonymous Learner" if st.session_state.get("is_anonymous") else "Profile Unset"
+    )
+    skill_count = len(st.session_state.get("student_skills", []))
+
+    if is_profile_ready and (candidate_name != "Profile Unset" or st.session_state.get("is_anonymous")):
+        st.markdown(
+            f"""
+            <div style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.4); border-radius:10px; padding:10px 12px; margin-bottom:12px;">
+                <div style="font-size:0.75rem; text-transform:uppercase; color:#6EE7B7; font-weight:700;">Active Candidate</div>
+                <div style="font-size:1.05rem; font-weight:800; color:#F8FAFC;">👤 {candidate_name}</div>
+                <div style="font-size:0.8rem; color:#94A3B8;">{skill_count} declared skill(s) locked in</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    else:
+        st.markdown(
+            """
+            <div style="background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.4); border-radius:10px; padding:10px 12px; margin-bottom:12px;">
+                <div style="font-size:0.75rem; text-transform:uppercase; color:#FCD34D; font-weight:700;">Profile Status</div>
+                <div style="font-size:0.95rem; font-weight:800; color:#F8FAFC;">⚠️ Profile Not Initialized</div>
+                <div style="font-size:0.8rem; color:#94A3B8;">Fill in your details in Student Profile</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
     # Navigation menu
     PAGES = [
@@ -221,7 +409,7 @@ with st.sidebar:
     st.session_state["ollama_model"] = model_input
 
     if st.button("🔌 Test Ollama Connection", use_container_width=True):
-        with st.spinner("Testing local Ollama connection..."):
+        with st.spinner("Pinging Ollama..."):
             test_provider = OllamaProvider(host=host_input, model=model_input, timeout=4)
             online, msg, models = test_provider.check_availability()
             if online:
@@ -236,97 +424,66 @@ with st.sidebar:
 
 
 # -----------------------------------------------------------------------------
-# Sample Job Description Preloader Helper
-# -----------------------------------------------------------------------------
-def load_sample_profile(role_name: str) -> None:
-    """Preloads realistic candidate profile and job description for quick testing."""
-    if role_name == "Junior Data Analyst":
-        st.session_state["student_name"] = "Alex Morgan"
-        st.session_state["is_anonymous"] = False
-        st.session_state["target_role"] = "Junior Data Analyst"
-        st.session_state["experience_level"] = "Beginner / Student (No commercial experience)"
-        st.session_state["student_skills"] = ["Python", "SQL", "Excel"]
-        st.session_state["job_description"] = """
-We are looking for a Junior Data Analyst to join our Growth Analytics team.
-Requirements:
-- Strong proficiency in SQL for aggregating relational databases and generating reports.
-- Working knowledge of Python (pandas, numpy) for data cleaning and exploratory data analysis.
-- Experience with Excel (pivot tables, XLOOKUP) for business summaries.
-- Solid grounding in Statistics (hypothesis testing, distributions, A/B testing).
-- Familiarity with Git and GitHub for collaborative script version control.
-- Good verbal and written Communication skills to present insights to stakeholders.
-- Analytical Problem Solving mindset.
-"""
-    elif role_name == "Python Developer":
-        st.session_state["student_name"] = "Jordan Reed"
-        st.session_state["is_anonymous"] = False
-        st.session_state["target_role"] = "Python Developer"
-        st.session_state["experience_level"] = "Junior (0 - 1 years experience)"
-        st.session_state["student_skills"] = ["Python", "Git and GitHub", "Problem Solving"]
-        st.session_state["job_description"] = """
-Seeking an early-career Python Developer to build backend microservices and automation workflows.
-Key Responsibilities:
-- Develop modular Python backend services with clean exception handling and unit tests.
-- Query and optimize relational databases using SQL (PostgreSQL).
-- Collaborate using Git and GitHub via feature branches and pull requests.
-- Solve algorithmic logic puzzles and optimize computational complexity.
-- Clear written communication for documentation and technical proposals.
-"""
-    elif role_name == "Machine Learning Intern":
-        st.session_state["student_name"] = "Priya Sharma"
-        st.session_state["is_anonymous"] = False
-        st.session_state["target_role"] = "Machine Learning Intern"
-        st.session_state["experience_level"] = "Beginner / Student (No commercial experience)"
-        st.session_state["student_skills"] = ["Python", "Statistics", "Problem Solving"]
-        st.session_state["job_description"] = """
-Summer Machine Learning Intern position.
-You will assist research engineers in training and evaluating predictive models.
-Qualifications:
-- Solid Python programming foundation with scikit-learn.
-- Strong mathematical background in Statistics and probability theory.
-- Hands-on experience with Machine Learning model training, cross-validation, and metrics (Precision/Recall).
-- Experience performing exploratory Data Analysis and data visualization.
-- Version control proficiency with Git and GitHub.
-"""
-    # Trigger instant analysis
-    res = analyzer.extract_skills_from_text(st.session_state["job_description"])
-    gap = analyzer.analyze_skill_gap(res["detected_skills"], st.session_state["student_skills"])
-    st.session_state["analysis_results"] = gap
-    st.session_state["user_answers"] = {}
-    st.session_state["assessment_results"] = None
-    st.session_state["roadmap_data"] = None
-
-
-# -----------------------------------------------------------------------------
 # PAGE 1: 🏠 Home / Dashboard
 # -----------------------------------------------------------------------------
 if selected_page == "🏠 Home / Dashboard":
-    st.title("SkillBridge AI")
+    st.markdown('<div class="hero-title-3d">SkillBridge AI</div>', unsafe_allow_html=True)
     st.markdown(
-        f'<div class="hero-tagline">{APP_TAGLINE}</div>',
+        f'<div class="hero-tagline-3d"><span>“Don\'t just claim skills. Prove them.”</span> — Evidence-Based Career Intelligence</div>',
         unsafe_allow_html=True,
     )
 
-    st.markdown(
-        """
-SkillBridge AI bridges the credibility gap between self-reported resumes and verified technical capability.
-Analyze real job descriptions, evaluate your practical skills via transparent deterministic quizzes,
-and execute a personalized 7-day learning roadmap tailored to your target career role.
-"""
+    # User Profile Status Banner
+    is_ready = bool(st.session_state.get("profile_completed", False))
+    user_skills = st.session_state.get("student_skills", [])
+    user_name = st.session_state.get("student_name", "").strip() or (
+        "Anonymous" if st.session_state.get("is_anonymous") else None
     )
 
-    # Top KPI Metrics Cards
+    if not is_ready or not user_skills:
+        st.markdown(
+            """
+            <div class="user-alert-3d">
+                <div style="font-size:1.15rem; font-weight:800; color:#F8FAFC; margin-bottom:0.3rem;">
+                    👋 Welcome! Your Personal Profile is Fresh & Empty.
+                </div>
+                <div style="color:#CBD5E1; font-size:0.95rem; margin-bottom:0.85rem;">
+                    SkillBridge AI does <b>not</b> assume random mock data. We evaluate <b>only your actual profile</b>
+                    and the specific job descriptions you submit.
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        if st.button("⚡ Setup My Profile Now (Add Skills & Role) →", type="primary"):
+            st.session_state["active_tab"] = "👤 Student Profile"
+            st.rerun()
+    else:
+        st.markdown(
+            f"""
+            <div class="user-alert-3d" style="border-color:rgba(16,185,129,0.5); background:linear-gradient(135deg, rgba(6,78,59,0.2) 0%, rgba(15,23,42,0.85) 100%);">
+                <div style="font-size:1.1rem; font-weight:800; color:#6EE7B7;">
+                    ✅ Profile Active for {user_name or 'You'} ({st.session_state.get('target_role', 'Target Role')})
+                </div>
+                <div style="color:#E2E8F0; font-size:0.9rem; margin-top:0.25rem;">
+                    <b>Your Declared Skills:</b> {", ".join(user_skills)}
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    # Top KPI 3D Metric Cards
     gap = st.session_state.get("analysis_results")
     assessment_res = st.session_state.get("assessment_results")
-    roadmap = st.session_state.get("roadmap_data")
 
     c1, c2, c3, c4 = st.columns(4)
     with c1:
         st.markdown(
             f"""
-        <div class="metric-card">
-            <div class="metric-card-title">Required Skills</div>
-            <div class="metric-card-value">{gap.get('total_required', 0) if gap else 0}</div>
+        <div class="metric-card-3d">
+            <div class="metric-title-3d">Your Skills</div>
+            <div class="metric-value-3d" style="color:#818CF8;">{len(user_skills)}</div>
         </div>
         """,
             unsafe_allow_html=True,
@@ -334,9 +491,9 @@ and execute a personalized 7-day learning roadmap tailored to your target career
     with c2:
         st.markdown(
             f"""
-        <div class="metric-card">
-            <div class="metric-card-title">Matched Skills</div>
-            <div class="metric-card-value" style="color:#6EE7B7;">{gap.get('match_count', 0) if gap else 0}</div>
+        <div class="metric-card-3d">
+            <div class="metric-title-3d">Job Required</div>
+            <div class="metric-value-3d" style="color:#38BDF8;">{gap.get('total_required', 0) if gap else 0}</div>
         </div>
         """,
             unsafe_allow_html=True,
@@ -344,9 +501,9 @@ and execute a personalized 7-day learning roadmap tailored to your target career
     with c3:
         st.markdown(
             f"""
-        <div class="metric-card">
-            <div class="metric-card-title">Skill Gaps (Missing)</div>
-            <div class="metric-card-value" style="color:#FCD34D;">{gap.get('missing_count', 0) if gap else 0}</div>
+        <div class="metric-card-3d">
+            <div class="metric-title-3d">Skill Gaps</div>
+            <div class="metric-value-3d" style="color:#FCD34D;">{gap.get('missing_count', 0) if gap else 0}</div>
         </div>
         """,
             unsafe_allow_html=True,
@@ -355,60 +512,69 @@ and execute a personalized 7-day learning roadmap tailored to your target career
         verified_count = len(assessment_res.get("verified_skills", [])) if assessment_res else 0
         st.markdown(
             f"""
-        <div class="metric-card">
-            <div class="metric-card-title">Verified Skills</div>
-            <div class="metric-card-value" style="color:#818CF8;">{verified_count}</div>
+        <div class="metric-card-3d">
+            <div class="metric-title-3d">Verified Skills</div>
+            <div class="metric-value-3d" style="color:#6EE7B7;">{verified_count}</div>
         </div>
         """,
             unsafe_allow_html=True,
         )
 
-    st.markdown("### ⚡ Quick Demo Launchers")
-    st.write("Test the end-to-end workflow instantly with curated benchmark job postings:")
-
-    col_a, col_b, col_c = st.columns(3)
-    with col_a:
-        if st.button("📊 Load Junior Data Analyst Demo", use_container_width=True):
-            load_sample_profile("Junior Data Analyst")
-            st.session_state["active_tab"] = "🔍 Job Description Analysis"
-            st.rerun()
-    with col_b:
-        if st.button("🐍 Load Python Developer Demo", use_container_width=True):
-            load_sample_profile("Python Developer")
-            st.session_state["active_tab"] = "🔍 Job Description Analysis"
-            st.rerun()
-    with col_c:
-        if st.button("🤖 Load ML Intern Demo", use_container_width=True):
-            load_sample_profile("Machine Learning Intern")
-            st.session_state["active_tab"] = "🔍 Job Description Analysis"
-            st.rerun()
-
-    st.divider()
-
-    # User Journey Steps
-    st.markdown("### 🗺️ The SkillBridge Journey")
+    st.markdown("### 🗺️ The 4-Step Proof Pipeline")
     s1, s2, s3, s4 = st.columns(4)
     with s1:
-        st.markdown("#### 1. Profile")
-        st.caption("Declare your target role, experience level, and current self-reported skill set.")
+        st.markdown(
+            """
+        <div class="card-3d">
+            <div style="font-size:1.8rem;">👤</div>
+            <h4 style="margin:0.5rem 0; color:#F8FAFC;">1. Your Profile</h4>
+            <p style="font-size:0.88rem; color:#94A3B8;">Declare your actual skills, target role, and career tier.</p>
+        </div>
+        """,
+            unsafe_allow_html=True,
+        )
     with s2:
-        st.markdown("#### 2. Analyze")
-        st.caption("Paste a job posting. Transparent taxonomy matching identifies exact missing skill gaps.")
+        st.markdown(
+            """
+        <div class="card-3d">
+            <div style="font-size:1.8rem;">🔍</div>
+            <h4 style="margin:0.5rem 0; color:#F8FAFC;">2. Analyze Job</h4>
+            <p style="font-size:0.88rem; color:#94A3B8;">Paste any posting to extract required skills vs your profile.</p>
+        </div>
+        """,
+            unsafe_allow_html=True,
+        )
     with s3:
-        st.markdown("#### 3. Prove")
-        st.caption("Take practical multiple-choice quizzes to verify competency with deterministic scoring.")
+        st.markdown(
+            """
+        <div class="card-3d">
+            <div style="font-size:1.8rem;">🎯</div>
+            <h4 style="margin:0.5rem 0; color:#F8FAFC;">3. Prove Skills</h4>
+            <p style="font-size:0.88rem; color:#94A3B8;">Take deterministic multiple-choice quizzes with explanations.</p>
+        </div>
+        """,
+            unsafe_allow_html=True,
+        )
     with s4:
-        st.markdown("#### 4. Accelerate")
-        st.caption("Execute a structured 7-day action plan with daily micro-tasks and a capstone portfolio project.")
+        st.markdown(
+            """
+        <div class="card-3d">
+            <div style="font-size:1.8rem;">🗺️</div>
+            <h4 style="margin:0.5rem 0; color:#F8FAFC;">4. 7-Day Roadmap</h4>
+            <p style="font-size:0.88rem; color:#94A3B8;">Execute daily micro-tasks yielding real evidence artifacts.</p>
+        </div>
+        """,
+            unsafe_allow_html=True,
+        )
 
 
 # -----------------------------------------------------------------------------
-# PAGE 2: 👤 Student Profile
+# PAGE 2: 👤 Student Profile (Primary Entry Point)
 # -----------------------------------------------------------------------------
 elif selected_page == "👤 Student Profile":
-    st.title("👤 Student Skill Profile")
+    st.markdown('<div class="hero-title-3d">👤 Student Skill Profile</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="hero-tagline">Define your background, target role, and self-reported competencies.</div>',
+        '<div class="hero-tagline-3d">Add your personal details and skills below. <b>SkillBridge AI processes ONLY what you provide.</b></div>',
         unsafe_allow_html=True,
     )
 
@@ -418,111 +584,180 @@ elif selected_page == "👤 Student Profile":
         with col1:
             anon_toggle = st.checkbox(
                 "Use app anonymously (no personal name saved)",
-                value=st.session_state.get("is_anonymous", True),
+                value=st.session_state.get("is_anonymous", False),
             )
-            name_val = st.session_state.get("student_name", "Anonymous Learner")
+            existing_name = st.session_state.get("student_name", "")
             if anon_toggle:
                 student_name = "Anonymous Learner"
                 st.text_input("Candidate Name", value=student_name, disabled=True)
             else:
                 student_name = st.text_input(
-                    "Candidate Name",
-                    value=name_val if name_val != "Anonymous Learner" else "Alex Morgan",
+                    "Your Full Name",
+                    value=existing_name if existing_name != "Anonymous Learner" else "",
+                    placeholder="Enter your name (e.g., Alex Johnson)",
                 )
 
-            current_role = st.session_state.get("target_role", DEFAULT_ROLES[0])
-            role_options = DEFAULT_ROLES + ["Other / Custom Role"]
-            role_idx = role_options.index(current_role) if current_role in role_options else len(role_options) - 1
+            current_role = st.session_state.get("target_role", "")
+            role_options = [""] + DEFAULT_ROLES + ["Other / Custom Role"]
+            default_role_idx = role_options.index(current_role) if current_role in role_options else 0
 
-            selected_role = st.selectbox("Target Career Role", role_options, index=role_idx)
+            selected_role = st.selectbox(
+                "Target Career Role",
+                role_options,
+                index=default_role_idx,
+                format_func=lambda x: "Select Target Role..." if x == "" else x,
+            )
             if selected_role == "Other / Custom Role":
                 target_role = st.text_input("Specify Target Role", value="Software Engineer")
             else:
                 target_role = selected_role
 
         with col2:
-            current_exp = st.session_state.get("experience_level", EXPERIENCE_LEVELS[0])
-            exp_idx = (
-                EXPERIENCE_LEVELS.index(current_exp)
-                if current_exp in EXPERIENCE_LEVELS
-                else 0
-            )
+            current_exp = st.session_state.get("experience_level", "")
+            exp_options = [""] + EXPERIENCE_LEVELS
+            default_exp_idx = exp_options.index(current_exp) if current_exp in exp_options else 0
+
             experience_level = st.selectbox(
-                "Experience Level",
-                EXPERIENCE_LEVELS,
-                index=exp_idx,
+                "Your Experience Level",
+                exp_options,
+                index=default_exp_idx,
+                format_func=lambda x: "Select Experience Level..." if x == "" else x,
             )
 
             all_skill_names = analyzer.get_skill_names()
+            saved_skills = st.session_state.get("student_skills", [])
             selected_skills = st.multiselect(
-                "Self-Reported Skills (Select what you know)",
+                "Your Current Skills (Select everything you know)",
                 options=all_skill_names,
-                default=[s for s in st.session_state.get("student_skills", ["Python", "SQL"]) if s in all_skill_names],
-                help="These represent self-reported claims. They will not be marked 'Verified' until you take an assessment.",
+                default=[s for s in saved_skills if s in all_skill_names],
+                help="Only skills you select here will be treated as your self-reported profile skills.",
             )
 
-        submit_profile = st.form_submit_button("💾 Save Profile Changes", use_container_width=True)
+        submit_profile = st.form_submit_button("💾 Save & Lock In My Profile", type="primary", use_container_width=True)
 
         if submit_profile:
-            st.session_state["student_name"] = student_name
-            st.session_state["is_anonymous"] = anon_toggle
-            st.session_state["target_role"] = target_role
-            st.session_state["experience_level"] = experience_level
-            st.session_state["student_skills"] = selected_skills
+            if not anon_toggle and not student_name.strip():
+                st.error("Please enter your name or check 'Use app anonymously'.")
+            elif not selected_skills:
+                st.warning("Please select at least 1 skill you currently know.")
+            else:
+                st.session_state["student_name"] = "Anonymous Learner" if anon_toggle else student_name.strip()
+                st.session_state["is_anonymous"] = anon_toggle
+                st.session_state["target_role"] = target_role or "General Tech Role"
+                st.session_state["experience_level"] = experience_level or "Beginner / Student"
+                st.session_state["student_skills"] = selected_skills
+                st.session_state["profile_completed"] = True
 
-            # Re-run gap analysis if job description is present
-            if st.session_state.get("job_description"):
-                res = analyzer.extract_skills_from_text(st.session_state["job_description"])
-                st.session_state["analysis_results"] = analyzer.analyze_skill_gap(
-                    res["detected_skills"], selected_skills
-                )
-            st.success("Profile saved successfully!")
+                # If job description already exists, refresh gap analysis with user's new skills
+                if st.session_state.get("job_description"):
+                    res = analyzer.extract_skills_from_text(st.session_state["job_description"])
+                    st.session_state["analysis_results"] = analyzer.analyze_skill_gap(
+                        res["detected_skills"], selected_skills
+                    )
+                st.success("✅ Profile successfully saved! Your actual data is now locked in across the entire application.")
+                st.rerun()
 
-    # Summary Card
-    st.markdown("### Profile Summary")
-    sc1, sc2, sc3 = st.columns(3)
-    with sc1:
-        st.write(f"**Candidate:** `{st.session_state.get('student_name')}`")
-        st.write(f"**Target Role:** `{st.session_state.get('target_role')}`")
-    with sc2:
-        st.write(f"**Experience Level:** `{st.session_state.get('experience_level')}`")
-    with sc3:
-        st.write(f"**Self-Reported Skills ({len(st.session_state.get('student_skills', []))}):**")
-        pills = " ".join([f"`{s}`" for s in st.session_state.get("student_skills", [])])
-        st.markdown(pills or "*None selected yet*")
+    # Clear Profile Option
+    if st.session_state.get("profile_completed", False):
+        col_cl1, col_cl2 = st.columns([3, 1])
+        with col_cl2:
+            if st.button("🗑️ Clear / Reset My Profile", use_container_width=True):
+                st.session_state["student_name"] = ""
+                st.session_state["is_anonymous"] = False
+                st.session_state["target_role"] = ""
+                st.session_state["experience_level"] = ""
+                st.session_state["student_skills"] = []
+                st.session_state["profile_completed"] = False
+                st.session_state["analysis_results"] = None
+                st.session_state["assessment_questions"] = []
+                st.session_state["user_answers"] = {}
+                st.session_state["assessment_results"] = None
+                st.session_state["roadmap_data"] = None
+                st.info("Profile cleared. You can start fresh.")
+                st.rerun()
+
+    # Active Profile Card
+    if st.session_state.get("profile_completed", False):
+        st.markdown("### 📋 Active Profile Verification Summary")
+        sc1, sc2, sc3 = st.columns(3)
+        with sc1:
+            st.write(f"**Candidate:** `{st.session_state.get('student_name')}`")
+            st.write(f"**Target Role:** `{st.session_state.get('target_role')}`")
+        with sc2:
+            st.write(f"**Experience Level:** `{st.session_state.get('experience_level')}`")
+        with sc3:
+            st.write(f"**Declared Skills ({len(st.session_state.get('student_skills', []))}):**")
+            pills = " ".join([f"`{s}`" for s in st.session_state.get("student_skills", [])])
+            st.markdown(pills or "*None selected*")
 
 
 # -----------------------------------------------------------------------------
 # PAGE 3: 🔍 Job Description Analysis
 # -----------------------------------------------------------------------------
 elif selected_page == "🔍 Job Description Analysis":
-    st.title("🔍 Job Description Skill Gap Analyzer")
+    st.markdown('<div class="hero-title-3d">🔍 Job Description Skill Gap Analyzer</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="hero-tagline">Paste an actual job posting to identify required skills vs your current competencies.</div>',
+        '<div class="hero-tagline-3d">Paste any real job posting to analyze required skills against <b>your actual profile</b>.</div>',
         unsafe_allow_html=True,
     )
 
-    # Sample Buttons
-    st.caption("Quickly insert benchmark descriptions:")
-    pb1, pb2, pb3 = st.columns(3)
-    if pb1.button("📋 Sample: Junior Data Analyst"):
-        load_sample_profile("Junior Data Analyst")
-        st.rerun()
-    if pb2.button("📋 Sample: Python Developer"):
-        load_sample_profile("Python Developer")
-        st.rerun()
-    if pb3.button("📋 Sample: ML Intern"):
-        load_sample_profile("Machine Learning Intern")
-        st.rerun()
+    user_skills = st.session_state.get("student_skills", [])
+    if not user_skills:
+        st.warning(
+            "⚠️ **Notice:** You haven't added skills in your **Student Profile** yet. "
+            "You can extract job requirements now, but to see your Matched vs Missing gaps, please declare your skills in Student Profile."
+        )
+
+    # Optional Benchmark Template Insertion (Without overwriting user profile)
+    with st.expander("💡 Or Insert a Benchmark Job Posting Template (Does NOT alter your profile)"):
+        st.caption("Click to insert sample job description text into the text area below:")
+        tb1, tb2, tb3 = st.columns(3)
+        if tb1.button("📋 Template: Data Analyst"):
+            st.session_state["job_description"] = """
+We are looking for a Junior Data Analyst to join our team.
+Requirements:
+- Strong proficiency in SQL for aggregating relational databases and generating reports.
+- Working knowledge of Python (pandas, numpy) for data cleaning and exploratory data analysis.
+- Experience with Excel (pivot tables, XLOOKUP) for business summaries.
+- Solid grounding in Statistics (hypothesis testing, distributions, A/B testing).
+- Familiarity with Git and GitHub for collaborative script version control.
+- Good verbal and written Communication skills to present insights.
+- Analytical Problem Solving mindset.
+"""
+            st.rerun()
+
+        if tb2.button("📋 Template: Python Developer"):
+            st.session_state["job_description"] = """
+Seeking an early-career Python Developer to build backend microservices and automation workflows.
+Key Responsibilities:
+- Develop modular Python backend services with clean exception handling and unit tests.
+- Query and optimize relational databases using SQL (PostgreSQL).
+- Collaborate using Git and GitHub via feature branches and pull requests.
+- Solve algorithmic logic puzzles and optimize computational complexity.
+- Clear written communication for documentation and technical proposals.
+"""
+            st.rerun()
+
+        if tb3.button("📋 Template: ML Intern"):
+            st.session_state["job_description"] = """
+Summer Machine Learning Intern position.
+Qualifications:
+- Solid Python programming foundation with scikit-learn.
+- Strong mathematical background in Statistics and probability theory.
+- Hands-on experience with Machine Learning model training, cross-validation, and metrics.
+- Experience performing exploratory Data Analysis and data visualization.
+- Version control proficiency with Git and GitHub.
+"""
+            st.rerun()
 
     job_text = st.text_area(
-        "Job Description Text",
+        "Paste Job Description Here",
         value=st.session_state.get("job_description", ""),
         height=220,
-        placeholder="Paste full job posting text here (e.g., responsibilities, requirements, qualifications)...",
+        placeholder="Paste full job posting text here (e.g., qualifications, requirements, responsibilities)...",
     )
 
-    if st.button("🔎 Analyze Job Description", type="primary", use_container_width=True):
+    if st.button("🔎 Analyze Against My Profile", type="primary", use_container_width=True):
         st.session_state["job_description"] = job_text
         extraction = analyzer.extract_skills_from_text(job_text)
 
@@ -530,24 +765,23 @@ elif selected_page == "🔍 Job Description Analysis":
             st.warning("Please paste a non-empty job description.")
             st.session_state["analysis_results"] = None
         elif extraction["status"] == "no_matches":
-            st.info("No supported skills were recognized from this text. Check our taxonomy under About.")
+            st.info("No supported skills from our taxonomy were found in this text. Check About page for supported skills.")
             st.session_state["analysis_results"] = None
         else:
             gap = analyzer.analyze_skill_gap(
                 extraction["detected_skills"], st.session_state.get("student_skills", [])
             )
             st.session_state["analysis_results"] = gap
-            st.success(f"Successfully extracted {len(extraction['detected_skills'])} relevant skill(s)!")
+            st.success(f"Extracted {len(extraction['detected_skills'])} relevant skill requirements!")
 
     # Display Analysis Results
     gap_data = st.session_state.get("analysis_results")
     if gap_data:
         st.divider()
-        st.subheader("Analysis Breakdown")
+        st.subheader("🎯 Skill Gap Analysis Breakdown")
 
-        # Match Progress Bar
         pct = gap_data["match_percentage"]
-        st.markdown(f"**Role Readiness Match Rate:** `{pct}%`")
+        st.markdown(f"**Readiness Match Score:** `{pct}%`")
         st.progress(pct / 100.0)
 
         r1, r2, r3 = st.columns(3)
@@ -556,29 +790,29 @@ elif selected_page == "🔍 Job Description Analysis":
             for s in gap_data["required_skills"]:
                 st.markdown(f"- **{s}**")
         with r2:
-            st.markdown(f"#### Matched Skills ({len(gap_data['matched_skills'])})")
+            st.markdown(f"#### Matched with You ({len(gap_data['matched_skills'])})")
             if gap_data["matched_skills"]:
                 for s in gap_data["matched_skills"]:
-                    st.markdown(f"- ✅ <span class='badge-verified'>{s}</span>", unsafe_allow_html=True)
+                    st.markdown(f"- ✅ <span class='badge-3d-verified'>{s}</span>", unsafe_allow_html=True)
             else:
                 st.markdown("*No overlapping skills yet.*")
         with r3:
             st.markdown(f"#### Missing Skill Gaps ({len(gap_data['missing_skills'])})")
             if gap_data["missing_skills"]:
                 for s in gap_data["missing_skills"]:
-                    st.markdown(f"- ⚠️ <span class='badge-practice'>{s}</span>", unsafe_allow_html=True)
+                    st.markdown(f"- ⚠️ <span class='badge-3d-gap'>{s}</span>", unsafe_allow_html=True)
             else:
                 st.markdown("🎉 *Zero missing skills! You meet all listed requirements.*")
 
-        st.info(f"💡 **Transparent Matching Note:** {gap_data['summary']}")
+        st.info(f"💡 **Transparent Analysis:** {gap_data['summary']}")
 
         col_next1, col_next2 = st.columns(2)
         with col_next1:
-            if st.button("🎯 Proceed to Proof-of-Skill Assessment →", use_container_width=True):
+            if st.button("🎯 Prove Skills via Assessment →", use_container_width=True):
                 st.session_state["active_tab"] = "🎯 Proof-of-Skill Assessment"
                 st.rerun()
         with col_next2:
-            if st.button("🗺️ Jump to Career Roadmap →", use_container_width=True):
+            if st.button("🗺️ View Personalized 7-Day Roadmap →", use_container_width=True):
                 st.session_state["active_tab"] = "🗺️ Career Roadmap"
                 st.rerun()
 
@@ -587,33 +821,37 @@ elif selected_page == "🔍 Job Description Analysis":
 # PAGE 4: 🎯 Proof-of-Skill Assessment
 # -----------------------------------------------------------------------------
 elif selected_page == "🎯 Proof-of-Skill Assessment":
-    st.title("🎯 Proof-of-Skill Assessment Engine")
+    st.markdown('<div class="hero-title-3d">🎯 Proof-of-Skill Assessment Engine</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="hero-tagline">“Don\'t just claim skills. Prove them.” Complete deterministic quizzes to benchmark mastery.</div>',
+        '<div class="hero-tagline-3d">“Don\'t just claim skills. Prove them.” Test your knowledge with deterministic grading.</div>',
         unsafe_allow_html=True,
     )
 
-    # Determine skills to test
-    gap_data = st.session_state.get("analysis_results")
-    default_test_skills = []
-    if gap_data:
-        # Prioritize missing skills, then matched skills
-        default_test_skills = gap_data.get("missing_skills", []) or gap_data.get("matched_skills", [])
+    user_skills = st.session_state.get("student_skills", [])
+    gap_data = st.session_state.get("analysis_results") or {}
+    missing_skills = gap_data.get("missing_skills", [])
 
-    if not default_test_skills:
-        default_test_skills = st.session_state.get("student_skills", ["Python", "SQL"])
+    # The user picks which of THEIR skills or MISSING skills to evaluate
+    available_to_test = list(dict.fromkeys(missing_skills + user_skills))
+    all_taxonomy = analyzer.get_skill_names()
 
-    all_taxonomy_names = analyzer.get_skill_names()
+    if not available_to_test:
+        st.info(
+            "💡 You haven't added profile skills or analyzed a job description yet. "
+            "You can choose any skill from our taxonomy below to take an assessment."
+        )
+        available_to_test = all_taxonomy
 
-    with st.expander("⚙️ Configure Assessment Parameters", expanded=not bool(st.session_state.get("assessment_questions"))):
+    with st.expander("⚙️ Configure Quiz Parameters", expanded=not bool(st.session_state.get("assessment_questions"))):
         test_skills_chosen = st.multiselect(
-            "Select Skills to Evaluate",
-            options=all_taxonomy_names,
-            default=[s for s in default_test_skills if s in all_taxonomy_names][:3] or ["Python"],
+            "Choose Skills to Test",
+            options=all_taxonomy,
+            default=[s for s in available_to_test if s in all_taxonomy][:3] or [all_taxonomy[0]],
+            help="Select the specific skills you want to prove.",
         )
         questions_per_skill = st.slider("Questions per Skill", min_value=1, max_value=4, value=2)
 
-        if st.button("🚀 Start / Generate Quiz", type="primary", use_container_width=True):
+        if st.button("🚀 Start Assessment Quiz", type="primary", use_container_width=True):
             if not test_skills_chosen:
                 st.warning("Please choose at least one skill to evaluate.")
             else:
@@ -628,21 +866,28 @@ elif selected_page == "🎯 Proof-of-Skill Assessment":
     active_questions = st.session_state.get("assessment_questions", [])
 
     if not active_questions:
-        st.info("No active quiz loaded. Select skills above and click **Start / Generate Quiz**.")
+        st.info("Select skills above and click **Start Assessment Quiz** to begin.")
     else:
-        st.write(f"**Quiz Progress:** {len(active_questions)} question(s) loaded.")
-
-        # If not evaluated yet, show the quiz form
+        # If not evaluated yet, show quiz form
         if not st.session_state.get("assessment_results"):
             with st.form("assessment_quiz_form"):
                 answers_in_form = {}
 
                 for idx, q in enumerate(active_questions, start=1):
-                    st.markdown(f"#### Question {idx} • `{q['skill_name']}` ({q['difficulty']})")
+                    st.markdown(
+                        f"""
+                        <div class="card-3d" style="border-left:4px solid #6366F1;">
+                            <div style="font-weight:700; color:#818CF8; font-size:0.9rem;">
+                                Question {idx} • {q['skill_name']} ({q['difficulty']})
+                            </div>
+                        </div>
+                        """,
+                        unsafe_allow_html=True,
+                    )
                     st.markdown(q["question"])
 
                     selected_opt = st.radio(
-                        f"Choose your answer for Question {idx}:",
+                        f"Select your answer for Question {idx}:",
                         options=list(range(len(q["options"]))),
                         format_func=lambda i, opts=q["options"]: opts[i],
                         key=f"q_radio_{q['id']}",
@@ -650,7 +895,7 @@ elif selected_page == "🎯 Proof-of-Skill Assessment":
                     answers_in_form[q["id"]] = selected_opt
                     st.divider()
 
-                submit_quiz = st.form_submit_button("🏁 Submit Assessment for Deterministic Grading", type="primary", use_container_width=True)
+                submit_quiz = st.form_submit_button("🏁 Submit for Deterministic Grading", type="primary", use_container_width=True)
 
                 if submit_quiz:
                     eval_results = assessment_mgr.evaluate_answers(answers_in_form)
@@ -658,7 +903,7 @@ elif selected_page == "🎯 Proof-of-Skill Assessment":
                     st.session_state["assessment_results"] = eval_results
                     st.rerun()
 
-        # If evaluated, show comprehensive scorecard and explanations
+        # Scorecard
         else:
             eval_results = st.session_state["assessment_results"]
             st.subheader("📊 Assessment Scorecard")
@@ -675,7 +920,7 @@ elif selected_page == "🎯 Proof-of-Skill Assessment":
             with col_s3:
                 st.metric("Skills Verified", len(eval_results["verified_skills"]))
 
-            # Skill breakdown table
+            # Breakdown
             st.markdown("### Per-Skill Verification Breakdown")
             breakdown_rows = []
             for sk, data in eval_results["skill_breakdown"].items():
@@ -685,10 +930,9 @@ elif selected_page == "🎯 Proof-of-Skill Assessment":
                     "Score Ratio": f"{data['correct_answers']} / {data['total_questions']}",
                     "Evidence Status": "Verified (Pass)" if data["is_verified"] else "Needs Practice",
                 })
-            df_breakdown = pd.DataFrame(breakdown_rows)
-            st.dataframe(df_breakdown, use_container_width=True, hide_index=True)
+            st.dataframe(pd.DataFrame(breakdown_rows), use_container_width=True, hide_index=True)
 
-            # Detailed explanations for each question
+            # Detailed explanations
             st.markdown("### 📝 Detailed Answer Explanations")
             for idx, r in enumerate(eval_results["detailed_results"], start=1):
                 icon = "✅" if r["is_correct"] else "❌"
@@ -706,7 +950,7 @@ elif selected_page == "🎯 Proof-of-Skill Assessment":
                     st.session_state["assessment_results"] = None
                     st.rerun()
             with col_r2:
-                if st.button("🗺️ Generate Custom 7-Day Roadmap →", type="primary", use_container_width=True):
+                if st.button("🗺️ Build Personalized Roadmap →", type="primary", use_container_width=True):
                     st.session_state["active_tab"] = "🗺️ Career Roadmap"
                     st.rerun()
 
@@ -715,9 +959,9 @@ elif selected_page == "🎯 Proof-of-Skill Assessment":
 # PAGE 5: 🗺️ Career Roadmap
 # -----------------------------------------------------------------------------
 elif selected_page == "🗺️ Career Roadmap":
-    st.title("🗺️ Personalized 7-Day Career Roadmap")
+    st.markdown('<div class="hero-title-3d">🗺️ Personalized 7-Day Career Roadmap</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="hero-tagline">Actionable micro-tasks, time estimations, and concrete evidence deliverables to bridge your skill gap.</div>',
+        '<div class="hero-tagline-3d">Concrete micro-tasks and evidence deliverables tailored to your target role and gaps.</div>',
         unsafe_allow_html=True,
     )
 
@@ -728,13 +972,13 @@ elif selected_page == "🗺️ Career Roadmap":
     needs_practice = assessment_data.get("needs_practice_skills", [])
     verified = assessment_data.get("verified_skills", [])
 
-    target_role = st.session_state.get("target_role", "Junior Data Analyst")
-    experience = st.session_state.get("experience_level", "Beginner / Student")
+    target_role = st.session_state.get("target_role", "").strip() or "Junior Data Analyst"
+    experience = st.session_state.get("experience_level", "").strip() or "Beginner / Student"
 
     col_btn1, col_btn2 = st.columns([2, 1])
     with col_btn1:
-        if st.button("⚡ Generate / Regenerate 7-Day Roadmap", type="primary", use_container_width=True):
-            with st.spinner("Compiling pedagogical roadmap with practical tasks and evidence requirements..."):
+        if st.button("⚡ Generate / Regenerate My 7-Day Roadmap", type="primary", use_container_width=True):
+            with st.spinner("Synthesizing 7-day action plan..."):
                 ai_prov = OllamaProvider(
                     host=st.session_state.get("ollama_host", DEFAULT_OLLAMA_HOST),
                     model=st.session_state.get("ollama_model", DEFAULT_OLLAMA_MODEL),
@@ -756,70 +1000,69 @@ elif selected_page == "🗺️ Career Roadmap":
     roadmap = st.session_state.get("roadmap_data")
 
     if not roadmap:
-        st.info("Click **Generate / Regenerate 7-Day Roadmap** above to create your structured learning plan.")
+        st.info("Click **Generate / Regenerate My 7-Day Roadmap** above to generate your customized action plan.")
     else:
-        # Provenance Banner (Strict Hackathon Requirement: Transparent attribution)
+        # Provenance attribution
         source = roadmap.get("source", "Fallback Engine")
         if "Ollama" in source:
             st.markdown(
-                f'<div class="provenance-ai">🤖 <b>AI Provider Active:</b> {source} — {roadmap.get("generation_note", "")}</div>',
+                f'<div class="provenance-ai-3d">🤖 <b>AI Provider Active:</b> {source} — {roadmap.get("generation_note", "")}</div>',
                 unsafe_allow_html=True,
             )
         else:
             st.markdown(
-                f'<div class="provenance-fallback">⚙️ <b>Engine Active:</b> {source} — {roadmap.get("generation_note", "")}</div>',
+                f'<div class="provenance-fallback-3d">⚙️ <b>Engine Active:</b> {source} — {roadmap.get("generation_note", "")}</div>',
                 unsafe_allow_html=True,
             )
 
-        # Roadmap Metadata
         m1, m2, m3 = st.columns(3)
         with m1:
             st.write(f"**Target Role:** `{roadmap.get('target_role')}`")
         with m2:
             st.write(f"**Experience Level:** `{roadmap.get('experience_level')}`")
         with m3:
-            p_skills = ", ".join(roadmap.get("priority_skills", [])) or "Role Core Fundamentals"
+            p_skills = ", ".join(roadmap.get("priority_skills", [])) or "Core Fundamentals"
             st.write(f"**Priority Focus:** `{p_skills}`")
 
         st.divider()
 
-        # Interactive 7 Days
+        # 7 Days Interactive Checklist
         st.subheader("📅 7-Day Action Plan")
         completed_set = st.session_state.get("completed_tasks", set())
 
         for d in roadmap.get("days", []):
             day_num = d["day"]
             is_done = day_num in completed_set
+            completed_cls = "completed" if is_done else ""
 
-            with st.container():
-                st.markdown(
-                    f"""
-                <div class="day-card" style="border-left-color: {'#10B981' if is_done else '#6366F1'};">
+            st.markdown(
+                f"""
+                <div class="day-card-3d {completed_cls}">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
                         <h4 style="margin:0; color:#F8FAFC;">Day {day_num}: {d['title']}</h4>
-                        <span class="badge-neutral">⏱️ {d['estimated_time']}</span>
+                        <span class="badge-3d-neutral">⏱️ {d['estimated_time']}</span>
                     </div>
                     <p style="margin-top:0.5rem; color:#CBD5E1;"><b>🎯 Objective:</b> {d['objective']}</p>
                     <p style="color:#CBD5E1;"><b>🛠️ Practical Task:</b> {d['practical_task']}</p>
-                    <p style="color:#94A3B8; font-size:0.9rem;"><b>📦 Expected Output / Evidence:</b> <code>{d['expected_evidence']}</code></p>
+                    <p style="color:#94A3B8; font-size:0.9rem;"><b>📦 Expected Evidence:</b> <code>{d['expected_evidence']}</code></p>
                 </div>
                 """,
-                    unsafe_allow_html=True,
-                )
+                unsafe_allow_html=True,
+            )
 
-                check_done = st.checkbox(
-                    f"Mark Day {day_num} as Completed",
-                    value=is_done,
-                    key=f"check_day_{day_num}",
-                )
-                if check_done and day_num not in completed_set:
-                    completed_set.add(day_num)
-                    st.session_state["completed_tasks"] = completed_set
-                    st.rerun()
-                elif not check_done and day_num in completed_set:
-                    completed_set.remove(day_num)
-                    st.session_state["completed_tasks"] = completed_set
-                    st.rerun()
+            check_done = st.checkbox(
+                f"Mark Day {day_num} as Completed",
+                value=is_done,
+                key=f"check_day_{day_num}",
+            )
+            if check_done and day_num not in completed_set:
+                completed_set.add(day_num)
+                st.session_state["completed_tasks"] = completed_set
+                st.rerun()
+            elif not check_done and day_num in completed_set:
+                completed_set.remove(day_num)
+                st.session_state["completed_tasks"] = completed_set
+                st.rerun()
 
         # Portfolio Project Blueprint
         portfolio = roadmap.get("portfolio_project")
@@ -845,9 +1088,9 @@ elif selected_page == "🗺️ Career Roadmap":
 # PAGE 6: 📊 Progress & Export
 # -----------------------------------------------------------------------------
 elif selected_page == "📊 Progress & Export":
-    st.title("📊 Progress Dashboard & Privacy Export")
+    st.markdown('<div class="hero-title-3d">📊 Progress Dashboard & Privacy Export</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="hero-tagline">Track completed learning milestones and export your local Career Proof Dossier.</div>',
+        '<div class="hero-tagline-3d">Track completed milestones and download your local Career Proof Dossier.</div>',
         unsafe_allow_html=True,
     )
 
@@ -856,7 +1099,6 @@ elif selected_page == "📊 Progress & Export":
     roadmap_data = st.session_state.get("roadmap_data")
     completed_set = st.session_state.get("completed_tasks", set())
 
-    # Roadmap Progress
     total_days = len(roadmap_data.get("days", [])) if roadmap_data else 7
     done_count = len(completed_set)
     done_pct = round((done_count / total_days * 100), 1) if total_days > 0 else 0.0
@@ -866,7 +1108,7 @@ elif selected_page == "📊 Progress & Export":
         st.metric("Roadmap Completion", f"{done_pct}%", f"{done_count}/{total_days} Days Completed")
     with c2:
         verified_cnt = len(assessment_data.get("verified_skills", [])) if assessment_data else 0
-        st.metric("Assessed & Verified Skills", verified_cnt)
+        st.metric("Verified Skills", verified_cnt)
     with c3:
         needs_work_cnt = len(assessment_data.get("needs_practice_skills", [])) if assessment_data else 0
         st.metric("Skills Needing Practice", needs_work_cnt)
@@ -874,10 +1116,8 @@ elif selected_page == "📊 Progress & Export":
     st.progress(done_pct / 100.0)
     st.divider()
 
-    # Evidence vs Claim Comparison Matrix
+    # Evidence Matrix
     st.subheader("📋 Evidence vs Claim Verification Matrix")
-    st.caption("Distinguishes unverified self-reported skills from evidence-tested skills.")
-
     all_reported = st.session_state.get("student_skills", [])
     verified_skills = assessment_data.get("verified_skills", []) if assessment_data else []
     practice_skills = assessment_data.get("needs_practice_skills", []) if assessment_data else []
@@ -902,14 +1142,12 @@ elif selected_page == "📊 Progress & Export":
     if comparison_data:
         st.dataframe(pd.DataFrame(comparison_data), use_container_width=True, hide_index=True)
     else:
-        st.info("No profile skills entered yet.")
+        st.info("No profile skills entered yet. Complete your profile to populate the matrix.")
 
     st.divider()
 
     # Export Section
     st.subheader("📥 Export Career Proof Dossier")
-    st.write("Export your complete profile, gap analysis, assessment scorecard, and roadmap as local files:")
-
     markdown_report = StorageManager.generate_markdown_report(
         student_name=st.session_state.get("student_name", "Anonymous Learner"),
         target_role=st.session_state.get("target_role", "Junior Data Analyst"),
@@ -960,7 +1198,6 @@ elif selected_page == "📊 Progress & Export":
             use_container_width=True,
         )
 
-    # Privacy Guarantee Card
     with st.expander("🔒 Privacy & Storage Architecture Notice"):
         st.markdown(StorageManager.get_privacy_statement())
 
@@ -969,9 +1206,9 @@ elif selected_page == "📊 Progress & Export":
 # PAGE 7: ℹ️ About & Architecture
 # -----------------------------------------------------------------------------
 elif selected_page == "ℹ️ About & Architecture":
-    st.title("ℹ️ About SkillBridge AI")
+    st.markdown('<div class="hero-title-3d">ℹ️ About SkillBridge AI</div>', unsafe_allow_html=True)
     st.markdown(
-        f'<div class="hero-tagline">{APP_TAGLINE} — Open-Source AI Hackathon Solution</div>',
+        f'<div class="hero-tagline-3d">{APP_TAGLINE} — Open-Source AI Hackathon Solution</div>',
         unsafe_allow_html=True,
     )
 
@@ -991,10 +1228,11 @@ skills employers are asking for, while hiring managers are inundated with keywor
 
 ### The Solution: SkillBridge AI
 SkillBridge AI establishes **evidence-based skill credibility**:
-1. **Transparent Keyword & Synonym Extraction:** Transparent parsing derived from an open taxonomy.
-2. **Proof-of-Skill Assessments:** Objective MCQs with deterministic scoring and per-question pedagogical rationale.
-3. **Structured 7-Day Roadmap:** Micro-tasks yielding concrete evidence artifacts (code scripts, PRs, gists).
-4. **Privacy-Preserving Local AI:** Optional local model execution via Ollama (`llama3.2`, `mistral`, `phi3`) with 100% offline fallback.
+1. **User-Centric Data Governance:** We never process random mock data without your consent. Your profile is the sole anchor.
+2. **Transparent Keyword & Synonym Extraction:** Transparent parsing derived from an open taxonomy.
+3. **Proof-of-Skill Assessments:** Objective MCQs with deterministic scoring and per-question pedagogical rationale.
+4. **Structured 7-Day Roadmap:** Micro-tasks yielding concrete evidence artifacts (code scripts, PRs, gists).
+5. **Privacy-Preserving Local AI:** Optional local model execution via Ollama (`llama3.2`, `mistral`, `phi3`) with 100% offline fallback.
 """
         )
 
@@ -1026,17 +1264,8 @@ SkillBridge AI establishes **evidence-based skill credibility**:
   - assessment.py (Question Bank)      - llama3.2 / mistral / phi3
   - roadmap.py (Fallback Engine)       - Transparent Provenance Tags
 ```
-
-- **Clean Decoupling:** Core skill extraction and grading execute with zero network requests.
-- **Fail-Safe Design:** If Ollama is offline or times out, the deterministic engine automatically takes over without user disruption.
 """
         )
-
-    with tab_arch:
-        st.write("Supported Taxonomy Skills:")
-        tax_skills = analyzer.get_all_skills()
-        tax_rows = [{"Skill": s["name"], "Category": s["category"], "Synonyms": ", ".join(s["synonyms"][:4])} for s in tax_skills]
-        st.dataframe(pd.DataFrame(tax_rows), use_container_width=True, hide_index=True)
 
     with tab_ollama:
         st.markdown(
@@ -1045,21 +1274,10 @@ SkillBridge AI establishes **evidence-based skill credibility**:
 
 SkillBridge AI works completely offline without Ollama, but you can enable real-time local AI generation:
 
-1. **Install Ollama:**
-   - Download for Windows from [ollama.com](https://ollama.com).
-2. **Pull a lightweight model:**
-   ```bash
-   ollama pull llama3.2:1b
-   # or
-   ollama pull llama3.2
-   ```
-3. **Run Ollama:**
-   ```bash
-   ollama serve
-   ```
-4. **Enable in SkillBridge AI:**
-   - In the left sidebar, toggle **Enable Local AI (Ollama)**.
-   - Click **Test Ollama Connection** to verify status.
+1. **Install Ollama:** Download from [ollama.com](https://ollama.com).
+2. **Pull a model:** `ollama pull llama3.2:1b`
+3. **Run Ollama:** `ollama serve`
+4. **Toggle in SkillBridge AI:** Enable the switch in the sidebar.
 """
         )
 
@@ -1068,11 +1286,7 @@ SkillBridge AI works completely offline without Ollama, but you can enable real-
             """
 ### License & Model Provenance
 
-- **Software License:** MIT License. Free for open-source modification and distribution.
-- **Local Model Licenses (when selected by user):**
-  - **Llama 3.2 (Meta):** Distributed under the [Llama 3.2 Community License Agreement](https://llama.meta.com/llama3/license/). Permitted for academic and commercial use under 700M monthly active users.
-  - **Mistral (Mistral AI):** Distributed under Apache 2.0.
-  - **Phi-3 (Microsoft):** Distributed under MIT License.
-- **Deterministic Question Bank & Taxonomy:** Included under the project's MIT License.
+- **Software License:** MIT License.
+- **Open-Weight Models:** Llama 3.2 (Meta Community License), Mistral (Apache 2.0), Phi-3 (MIT).
 """
         )

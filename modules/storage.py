@@ -19,11 +19,12 @@ class StorageManager:
     def init_session_state() -> None:
         """Initializes default Streamlit session state keys if not already present."""
         defaults = {
-            "student_name": "Anonymous Learner",
-            "is_anonymous": True,
-            "target_role": "Junior Data Analyst",
-            "experience_level": "Beginner / Student (No commercial experience)",
-            "student_skills": ["Python", "SQL"],
+            "student_name": "",
+            "is_anonymous": False,
+            "target_role": "",
+            "experience_level": "",
+            "student_skills": [],
+            "profile_completed": False,
             "job_description": "",
             "analysis_results": None,
             "assessment_questions": [],
@@ -34,7 +35,7 @@ class StorageManager:
             "ollama_host": "http://localhost:11434",
             "ollama_model": "llama3.2",
             "ollama_timeout": 8,
-            "active_tab": "Home / Dashboard",
+            "active_tab": "🏠 Home / Dashboard",
         }
 
         for key, val in defaults.items():

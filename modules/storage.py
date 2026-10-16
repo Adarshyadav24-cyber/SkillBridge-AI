@@ -19,6 +19,7 @@ class StorageManager:
     def init_session_state() -> None:
         """Initializes default Streamlit session state keys if not already present."""
         defaults = {
+            "is_logged_in": False,
             "student_name": "",
             "is_anonymous": False,
             "target_role": "",
